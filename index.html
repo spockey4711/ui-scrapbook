@@ -1,0 +1,43 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="description" content="100 playful, interactive UI experiments. A scrapbook of paper, personality, and little possibilities.">
+  <title>Little UI, Big Feelings / 100 handmade-feeling experiments</title>
+  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="assets/paper.css">
+  <link rel="stylesheet" href="assets/gallery.css">
+  <script src="assets/catalog.js" defer></script>
+  <script src="assets/gallery.js" defer></script>
+</head>
+<body class="gallery-page">
+  <a class="skip-link" href="#collection">Skip to the collection</a>
+  <header class="site-header">
+    <a class="brand" href="index.html" aria-label="Little UI, Big Feelings home"><span class="brand-mark">✳</span><span>little ui,<br><strong>big feelings.</strong></span></a>
+    <span class="header-note hand">a scrapbook of digital possibilities</span>
+    <div class="header-actions"><button id="about-open" class="text-button">The story</button><button id="shortlist-top" class="shortlist-button" aria-pressed="false" aria-label="My shortlist">☆ <span>My shortlist</span><b id="favorite-count">0</b></button></div>
+  </header>
+  <main>
+    <section class="hero" aria-labelledby="hero-title">
+      <div class="hero-copy"><p class="eyebrow"><span class="tiny-star">✦</span> The interface experiment collection / Vol. 01</p><h1 id="hero-title">Little UI.<br><span>Big feelings.</span></h1><p class="hero-description">100 familiar things, wonderfully reimagined.<br>Made of paper, personality, and a little possibility.</p><div class="hero-actions"><a class="btn" href="#collection">Explore the collection <span>↓</span></a><button id="surprise-me" class="surprise-button hand">surprise me ↗</button></div></div>
+      <div class="hero-collage" aria-hidden="true">
+        <div class="collage-grid-paper"><span class="eyebrow">Field notes on making things</span><span class="hand">what if the useful thing<br>felt a little more human?</span><i class="doodle-loop"></i></div>
+        <div class="collage-pink-note"><span class="eyebrow">No two alike</span><strong>100</strong><span class="hand">little experiments</span></div>
+        <div class="collage-ticket"><span class="eyebrow">Admit one curious person</span><strong>GOOD IDEAS<br>LIVE HERE.</strong><div class="mini-barcode"></div></div>
+        <div class="collage-stamp">A LITTLE<br>OFF-CENTER.<br>A LOT OF HEART.</div>
+        <span class="collage-flower">✳</span><span class="collage-scribble hand">nothing too precious.<br>everything worth a try. ↖</span>
+      </div>
+    </section>
+    <div class="collection-layout" id="collection">
+      <aside class="collection-sidebar" aria-label="Collection filters"><div class="sidebar-heading"><span class="eyebrow">The contents</span><span class="hand">pick a page ↓</span></div><nav id="category-nav" aria-label="Component categories"></nav><div class="sidebar-bottom"><button id="shortlist-side" class="sidebar-favorites" aria-pressed="false">☆ My little shortlist <span id="sidebar-favorite-count">0</span></button><div class="sidebar-note"><span class="hand">Psst...</span><p>These are not pictures.<br>Open one. Press things.<br>Make a little mess.</p></div><p class="sidebar-meta eyebrow">Native HTML + CSS + JS<br>No framework. No fuss.</p></div></aside>
+      <section class="collection-main" aria-labelledby="collection-title"><div class="collection-heading"><div><p class="eyebrow">A field guide to delightful interfaces</p><h2 id="collection-title">The good stuff.</h2></div><span class="hand collection-annotation">familiar underneath.<br>unexpected on the surface. ↙</span></div><div class="collection-tools"><label class="search-box"><span aria-hidden="true">⌕</span><span class="sr-only">Search components</span><input id="component-search" type="search" placeholder="Find a little something..." autocomplete="off"><kbd>/</kbd></label><label class="sort-box"><span class="sr-only">Sort components</span><select id="component-sort"><option value="number">Notebook order</option><option value="name">A to Z</option><option value="shuffle">A happy shuffle</option></select></label></div><div class="result-line"><p id="results-summary" aria-live="polite">100 little experiments to explore</p><button id="clear-filters" hidden>Clear filters ×</button><span class="result-note">Go on. Touch the buttons.</span></div><div class="component-grid" id="component-grid"></div><div class="empty-results paper center" id="empty-results" hidden><span class="hand">a blank page, for now</span><h3>No little things found.</h3><p>Try a different word, or turn to another chapter.</p><button class="btn light" id="empty-reset">Back to everything</button></div><div class="load-more-wrap"><button class="btn light" id="load-more">Unpack 18 more ↓</button><span class="hand" id="visible-summary">18 of 100 on the desk</span></div></section>
+    </div>
+  </main>
+  <footer class="site-footer"><span class="brand-mark">✳</span><div><strong>Useful does not have to mean forgettable.</strong><p>A collection of 100 independent UI experiments, with a shared paper-and-ink soul.</p></div><a class="hand" href="#hero-title">back to the top ↑</a></footer>
+  <dialog id="experiment-dialog" aria-labelledby="experiment-title"><div class="experiment-shell"><header class="experiment-header"><div><p class="eyebrow" id="experiment-meta"></p><h2 id="experiment-title"></h2></div><button class="icon-btn" id="experiment-close" aria-label="Close experiment">×</button></header><div class="experiment-toolbar"><div class="row"><button class="chip" id="view-live" aria-pressed="true">Play with it</button><button class="chip" id="view-source" aria-pressed="false">Peek at the HTML</button></div><div class="row viewport-options" role="group" aria-label="Preview viewport"><button class="chip" id="viewport-desktop" aria-pressed="true">Desk</button><button class="chip" id="viewport-mobile" aria-pressed="false">Phone</button></div><button class="icon-btn" id="experiment-favorite" aria-label="Save experiment to shortlist" aria-pressed="false">☆</button></div><div class="experiment-stage" id="experiment-stage"><iframe id="experiment-frame" title="Interactive component preview"></iframe></div><div class="source-panel" id="source-panel" hidden><div class="row spread"><span class="eyebrow">The actual HTML file, shared assets included by reference</span><div class="row"><button class="btn small light" id="copy-source">Copy HTML</button><button class="btn small light" id="download-source">Save HTML</button></div></div><pre><code id="experiment-source"></code></pre></div><footer class="experiment-footer"><p id="experiment-hint"></p><div class="row"><button class="btn small light" id="experiment-prev" aria-label="Previous experiment">←</button><button class="btn small light" id="experiment-next" aria-label="Next experiment">→</button><a class="btn small" id="open-standalone" target="_blank" rel="noopener">Open full page ↗</a></div></footer></div></dialog>
+  <dialog id="about-dialog" aria-labelledby="about-title"><button class="icon-btn" id="about-close" aria-label="Close the story">×</button><span class="hand">a note from the workbench</span><h2 id="about-title">A little imperfect.<br>Very much on purpose.</h2><p>This collection starts with familiar UI patterns and asks a small question: what if they felt more human?</p><p>Buttons become stamps. Tabs become binder dividers. Progress becomes a quilt. A first idea becomes a seed.</p><p>There are 100 distinct, working experiments across 10 chapters. Every one has its own HTML page. Everything works locally, without a build server or external services.</p><div class="about-guidelines"><span class="eyebrow">How to explore</span><p>Search a feeling, a pattern, or a task. Open a component to play with it. Try the phone view. Keep your favorites in a local shortlist. Peek at the HTML when something sparks an idea.</p></div><p class="hand">Take a piece. Make it your own. Keep the heart.</p></dialog>
+  <div class="gallery-toast" id="gallery-toast" role="status" hidden></div>
+  <noscript><p class="paper">The gallery uses JavaScript for browsing. You can still open any of the 100 HTML files in the <a href="components/">components directory</a>.</p></noscript>
+</body>
+</html>
