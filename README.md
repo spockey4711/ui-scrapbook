@@ -8,13 +8,23 @@ Torn paper, letterpress-like typography, handwritten notes, stitched details, pa
 
 Open [`index.html`](index.html) directly in a browser. No installation, build server, network connection, or framework is needed. The fonts and illustrations are included locally.
 
-For an HTTP preview, run this from the `uni` directory:
+For an HTTP preview, run this from the repository root (`Capstone/ui-scrapbook/` in the original Uni workspace):
 
 ```sh
-python3 -m http.server 4173 --bind 127.0.0.1 --directory Capstone/ui-scrapbook
+python3 -m http.server 4173 --bind 127.0.0.1
 ```
 
 Then visit **http://127.0.0.1:4173/**.
+
+## Public deployment, private repository
+
+**Public gallery:** https://spockey4711.github.io/ui-scrapbook/
+
+**Private repository:** https://github.com/spockey4711/ui-scrapbook
+
+The GitHub Pages workflow in `.github/workflows/pages.yml` runs on pushes to `main` and can also be started manually. It regenerates the collection, runs the structural tests, and publishes only `index.html`, `assets/`, and `components/`. Development source modules, tests, the builder, and repository documentation are not included in the deployed site.
+
+The deployment is intentionally public and does not require a GitHub login. Anyone with the link can browse it. Like any public frontend, its delivered HTML, CSS, and JavaScript can be inspected or downloaded; keeping the repository private does not hide the code shipped to visitors.
 
 ## Browse and experiment
 
@@ -50,10 +60,10 @@ tests/                     Structural checks and browser interaction tests
 
 Each component file contains its own markup, component-specific CSS, and interaction code. It references the shared stylesheet and helper script; image-led components also reference the local illustration. **Keep the `assets/` folder alongside `components/` when moving or deploying the collection.** Downloaded/copied HTML still uses those relative asset references.
 
-To change a component, edit its definition in `source/`, then regenerate from the `uni` directory:
+To change a component, edit its definition in `source/`, then regenerate from the repository root:
 
 ```sh
-node Capstone/ui-scrapbook/build.mjs
+node build.mjs
 ```
 
 Do not manually edit generated component HTML or `assets/catalog.js`. The builder checks the count, uniqueness, and script syntax. Use `String.raw` for JavaScript snippet strings containing regular-expression escapes or `\n`.
@@ -74,13 +84,13 @@ The collection is intentionally independent of `Capstone/evolveportfolio`. It is
 Structural and JavaScript syntax checks, without third-party dependencies:
 
 ```sh
-node --test Capstone/ui-scrapbook/tests/structure.test.mjs
+node --test tests/structure.test.mjs
 ```
 
 With the HTTP server above running, execute the browser suite in Chrome:
 
 ```sh
-npx -y chrome-devtools-axi run < Capstone/ui-scrapbook/tests/browser.js
+npx -y chrome-devtools-axi run < tests/browser.js
 ```
 
 The browser suite opens **all 100 real HTML files at 900 px and 375 px**, checks initialization, horizontal page overflow, button names, and image loading, then exercises a distinct interaction in every component. Form tests click the visible submit buttons. It also checks that all 100 thumbnails fit their preview windows, and tests gallery filtering, search, live previews, phone sizing, source inspection, shortlist persistence, browsing all 100 components, and gallery layout at 320, 375, 768, and 1600 px. Test-generated component storage is restored after the component run.

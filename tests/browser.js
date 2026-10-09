@@ -1,4 +1,4 @@
-/* Run with: chrome-devtools-axi run < Capstone/ui-scrapbook/tests/browser.js */
+/* From the repository root: chrome-devtools-axi run < tests/browser.js */
 await page.open('http://127.0.0.1:4173/index.html');
 await page.wait('[data-gallery-ready="true"]');
 const report=await page.eval(async()=>{
