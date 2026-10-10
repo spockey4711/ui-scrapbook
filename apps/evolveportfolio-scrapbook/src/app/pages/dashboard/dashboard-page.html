@@ -1,0 +1,156 @@
+<div class="page-width dashboard reveal">
+  <header class="page-heading dashboard-heading">
+    <div>
+      <div class="eyebrow">04 / Entwicklung auf GitLab</div>
+      <h1>Was sich<br />bei uns bewegt.</h1>
+      <p>
+        Arbeitsstand, Aktivität und Projektstatus unserer Teamgruppe. Ein Überblick für alle, die
+        unsere Entwicklung begleiten.
+      </p>
+    </div>
+    <div class="dashboard-margin hand">Arbeit sichtbar machen.<br />Nicht Menschen bewerten.</div>
+  </header>
+  <aside class="demo-banner" aria-label="Hinweis auf Demo-Daten">
+    <span class="demo-label">Demo · keine Live-Daten</span>
+    <p>
+      Alle Zahlen, Projekte, Termine und Aktivitäten sind Testdaten. API-Zugriff noch in Klärung.
+      Demo-Zeitpunkt: 15.01.2027.
+    </p>
+  </aside>
+  <div class="dashboard-toolbar">
+    <label
+      >Projekt<select id="project-filter" [value]="projectId()" (change)="changeProject($event)">
+        <option value="all">Alle Projekte</option>
+        @for (project of demo.snapshot.projects; track project.id) {
+          <option [value]="project.id">{{ project.name }}</option>
+        }
+      </select></label
+    >
+    <label
+      >Aktivitätszeitraum<select
+        id="period-filter"
+        [value]="period()"
+        (change)="changePeriod($event)"
+      >
+        <option value="all">
+          {{ projectId() === 'all' ? 'Gesamter Zeitraum' : 'Seit Projektstart' }}
+        </option>
+        <option value="7">Letzte 7 Tage</option>
+        <option value="30">Letzte 30 Tage</option>
+        <option value="90">Letzte 90 Tage</option>
+      </select></label
+    >
+    <button
+      class="button secondary refresh"
+      (click)="demo.reload()"
+      [disabled]="demo.state() === 'loading'"
+    >
+      {{ demo.state() === 'loading' ? 'Lädt …' : 'Demo neu laden' }}
+      <span aria-hidden="true">↻</span>
+    </button>
+  </div>
+  <div class="demo-controls">
+    <label for="demo-state">MVP-Zustand testen</label
+    ><select id="demo-state" [value]="demo.state()" (change)="changeState($event)">
+      @for (option of stateOptions; track option.id) {
+        <option [value]="option.id">{{ option.label }}</option>
+      }</select
+    ><span>Nur Designvorschau, kein API-Aufruf.</span>
+  </div>
+  <section [attr.aria-busy]="demo.state() === 'loading'" aria-label="Dashboard-Daten">
+    @switch (demo.state()) {
+      @case ('loading') {
+        <div class="loading-status" role="status">Dashboard-Demo wird geladen …</div>
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-5" aria-hidden="true">
+          <div class="skeleton"></div>
+          <div class="skeleton"></div>
+        </div>
+      }
+      @case ('error') {
+        <div class="state-panel empty-state" role="alert">
+          <span class="state-symbol hand" aria-hidden="true">!</span>
+          <h2>Abruf fehlgeschlagen.</h2>
+          <p>Simulierter Verbindungsfehler. Es liegen keine verlässlich geladenen Daten vor.</p>
+          <button class="button secondary mt-5" (click)="demo.reload()">Erneut versuchen</button>
+        </div>
+      }
+      @case ('empty') {
+        <div class="state-panel empty-state">
+          <span class="state-symbol hand" aria-hidden="true">∅</span>
+          <h2>Noch eine leere Seite.</h2>
+          <p>
+            In dieser Demo-Ansicht sind keine Projektstatistiken verfügbar. Das ist kein
+            Abruffehler.
+          </p>
+          <button class="button secondary mt-5" (click)="demo.preview('ready')">
+            Demo-Daten anzeigen
+          </button>
+        </div>
+      }
+      @default {
+        <div class="metrics grid grid-cols-1 sm:grid-cols-2 gap-5">
+          <article>
+            <div class="metric-label eyebrow">Offene Issues <span>Aktueller Stand</span></div>
+            <div class="metric-value">
+              {{ totals().openIssues }}<span class="hand">Was noch ansteht.</span>
+            </div>
+            <p>Über die ausgewählten Projekte hinweg</p>
+          </article>
+          <article>
+            <div class="metric-label eyebrow">
+              Offene Merge Requests <span>Aktueller Stand</span>
+            </div>
+            <div class="metric-value">
+              {{ totals().openMergeRequests }}<span class="hand">Bereit fürs nächste Review.</span>
+            </div>
+            <p>Arbeit, die auf Zusammenführung wartet</p>
+          </article>
+        </div>
+        <app-dashboard-projects
+          [projects]="projects()"
+          [partialError]="demo.state() === 'partial'"
+          (retry)="demo.reload()"
+        />
+        <section class="data-sheet activity-sheet" aria-labelledby="activity-title">
+          <div class="sheet-heading">
+            <h2 id="activity-title">Zuletzt passiert</h2>
+            <span class="eyebrow">{{
+              period() === 'all' ? 'Gesamter gewählter Zeitraum' : 'Letzte ' + period() + ' Tage'
+            }}</span>
+          </div>
+          @for (activity of activities(); track activity.id) {
+            <article class="activity-row">
+              <span class="activity-kind">{{ kinds[activity.kind] }}</span>
+              <div class="activity-content">
+                <h3>{{ activity.title }}</h3>
+                <p>
+                  {{ projectName(activity.projectId) }} <span aria-hidden="true">·</span>
+                  {{ activity.reference }}
+                </p>
+              </div>
+              <time [attr.datetime]="activity.date">{{
+                activity.date | date: 'dd.MM.yyyy' : 'UTC'
+              }}</time>
+            </article>
+          } @empty {
+            <div class="empty-state">
+              <h3>In diesem Zeitraum ist es ruhig.</h3>
+              <p>
+                Keine Demo-Aktivitäten für diese Auswahl. Wähle einen längeren Zeitraum oder ein
+                anderes Projekt.
+              </p>
+            </div>
+          }
+        </section>
+        <div class="data-footer">
+          <span
+            >Demo zuletzt geladen: {{ demo.loadedAt() | date: 'HH:mm:ss' }} · Testdaten, nicht
+            GitLab-Stand</span
+          ><a [href]="site.groupUrl" target="_blank" rel="noopener noreferrer" class="text-link"
+            >Echte Teamgruppe öffnen <span aria-hidden="true">↗</span></a
+          >
+        </div>
+      }
+    }
+  </section>
+</div>

@@ -1,0 +1,63 @@
+.team-heading {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 45px;
+}
+.team-heading .note {
+  width: 230px;
+  flex-shrink: 0;
+  transform: rotate(3deg);
+}
+.team-heading .note .eyebrow {
+  font-size: 0.58rem;
+}
+.team-heading .note p {
+  color: var(--ink);
+  margin-top: 14px;
+}
+.placeholder-notice {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+  padding: 16px 20px;
+  border: 1px dashed #a8a18a;
+  background: #fffdf4;
+  box-shadow: 3px 3px 0 #f0a4bf;
+  margin-bottom: 32px;
+}
+.placeholder-notice p {
+  font-size: 0.75rem;
+  color: var(--muted);
+}
+.placeholder-notice .demo-label {
+  flex-shrink: 0;
+}
+.profile-grid {
+  margin-bottom: 48px;
+  row-gap: 32px;
+}
+.team-end {
+  padding-block: 28px 50px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-top: 1px solid var(--line);
+  gap: 20px;
+}
+.team-end .hand {
+  font-size: 1.8rem;
+  color: var(--forest);
+}
+@media (max-width: 800px) {
+  .team-heading .note {
+    display: none;
+  }
+}
+@media (max-width: 640px) {
+  .placeholder-notice,
+  .team-end {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+}

@@ -1,0 +1,96 @@
+<app-hero />
+<section id="team-preview" class="page-width section team-teaser">
+  <div>
+    <div class="section-label">
+      <span class="section-number">02</span><span class="eyebrow">Die Menschen dahinter</span>
+    </div>
+    <h2>Ein Team.<br />Mehr als eine Perspektive.</h2>
+    <p class="muted mt-5 max-w-lg">
+      Bevor es um das nächste Projekt geht, geht es um uns. Auf unserer Teamseite ist Platz für die
+      Menschen, Interessen und Ideen hinter Evolve.
+    </p>
+    <a routerLink="/team" class="text-link mt-6"
+      >Lerne das Team kennen <span aria-hidden="true">↗</span></a
+    >
+  </div>
+  <div class="team-preview" aria-label="Vorschau mit gekennzeichneten Profilplatzhaltern">
+    <span class="team-sticker eyebrow">Keine Stockfotos.<br />Echte Menschen folgen.</span>
+    <app-scrapbook-polaroid
+      class="first"
+      mark="Du?"
+      caption="Deine Perspektive."
+      question="Was begeistert dich?"
+    />
+    <app-scrapbook-polaroid
+      class="second"
+      mark="Wir."
+      caption="Unser nächstes Kapitel."
+      tone="blue"
+      question="Was wollen wir lernen?"
+    />
+    <span class="preview-caption hand">Kleine Karte. Mehr dahinter. ↶</span>
+  </div>
+</section>
+<section class="activity-section section">
+  <div class="page-width grid gap-10 md:grid-cols-2 items-center">
+    <div class="activity-sheet taped torn">
+      <div class="flex justify-between gap-4 items-center">
+        <span class="eyebrow">Unser GitLab</span><span class="sheet-tab hand">in Entwicklung</span>
+      </div>
+      <div class="notebook-row">
+        <span class="row-number">01</span>
+        <div>
+          <h3>Was steht an?</h3>
+          <p>Issues &amp; Arbeitsstand</p>
+        </div>
+        <span aria-hidden="true">↗</span>
+      </div>
+      <div class="notebook-row">
+        <span class="row-number">02</span>
+        <div>
+          <h3>Was bewegt sich?</h3>
+          <p>Commits &amp; Merge Requests</p>
+        </div>
+        <span aria-hidden="true">↗</span>
+      </div>
+      <div class="notebook-row">
+        <span class="row-number">03</span>
+        <div>
+          <h3>Wie läuft es?</h3>
+          <p>Pipeline-Status je Projekt</p>
+        </div>
+        <span aria-hidden="true">↗</span>
+      </div>
+      <p class="sheet-footnote">Live-Anbindung noch offen · Dashboard aktuell als Demo</p>
+    </div>
+    <div>
+      <div class="section-label">
+        <span class="section-number">03</span
+        ><span class="eyebrow">Entwicklung sichtbar machen</span>
+      </div>
+      <h2>Nicht nur erzählen.<br />Auch zeigen.</h2>
+      <p class="muted mt-5">
+        Vom Vorkurs bis zum Capstone: Unser Dashboard macht die Arbeit in der GitLab-Teamgruppe
+        nachvollziehbar. Über Projekte hinweg, ohne Ranglisten.
+      </p>
+      <a routerLink="/dashboard" class="button mt-7"
+        >Zum Dashboard <span aria-hidden="true">→</span></a
+      >
+    </div>
+  </div>
+</section>
+<section class="page-width section contact-teaser">
+  <span class="contact-stamp" aria-hidden="true">Post für<br />Evolve ↗</span>
+  <div>
+    <div class="section-label">
+      <span class="section-number">04</span><span class="eyebrow">Kontakt</span>
+    </div>
+    <h2>Noch eine Frage<br />am Seitenrand?</h2>
+  </div>
+  <div>
+    <p class="hand">Dann lass uns ins Gespräch kommen.</p>
+    <a routerLink="/contact" class="button secondary mt-5"
+      >Kontaktmöglichkeiten <span aria-hidden="true">↗</span></a
+    >
+  </div>
+</section>

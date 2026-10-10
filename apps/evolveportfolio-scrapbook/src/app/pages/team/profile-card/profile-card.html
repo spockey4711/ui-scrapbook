@@ -1,0 +1,36 @@
+<article class="profile-card" [attr.aria-labelledby]="'member-' + member().id">
+  <div class="photo-paper taped">
+    <div class="photo-slot">
+      <span class="profile-initials hand">{{ member().initials }}</span>
+      <span class="photo-caption eyebrow">Foto folgt</span>
+    </div>
+    <span class="photo-note hand">Hier kommst du rein.</span>
+    <span class="demo-label">Profilplatzhalter</span>
+  </div>
+  <div class="profile-content">
+    <span class="eyebrow">Hallo, ich bin …</span>
+    <h2 [id]="'member-' + member().id">{{ member().name }}</h2>
+    <p class="muted">{{ member().introduction }}</p>
+    <div class="flex flex-wrap gap-2 mt-5">
+      @for (interest of member().interests; track interest) {
+        <span class="tag">{{ interest }}</span>
+      }
+    </div>
+    <button
+      class="profile-toggle text-link"
+      [attr.aria-expanded]="expanded()"
+      [attr.aria-controls]="'note-' + member().id"
+      (click)="expanded.set(!expanded())"
+    >
+      {{ expanded() ? 'Notiz einklappen' : 'Eine persönliche Notiz' }}
+      <span aria-hidden="true">{{ expanded() ? '−' : '+' }}</span>
+    </button>
+    <div [id]="'note-' + member().id" [hidden]="!expanded()" class="personal-note">
+      <p class="hand">{{ member().note }}</p>
+      <p>
+        Platzhalter: Hier ist Raum für eine kleine Geschichte, ein Hobby oder etwas, das in keinem
+        Commit steht.
+      </p>
+    </div>
+  </div>
+</article>

@@ -4,6 +4,14 @@
 
 Torn paper, letterpress-like typography, handwritten notes, stitched details, paint-shop colors, tape, tickets, and a little intentional imperfection. Familiar controls remain recognizable; their interactions take a more playful route.
 
+## Project Evolve website preview
+
+The Angular Scrapbook website is published separately at:
+
+**https://spockey4711.github.io/ui-scrapbook/previews/evolveportfolio-scrapbook/**
+
+Its source snapshot and build instructions are in [`apps/evolveportfolio-scrapbook/`](apps/evolveportfolio-scrapbook/README.md). Hash routes support direct page links and refresh on GitHub Pages. Profiles are placeholders and dashboard data is synthetic, explicitly labeled demo content. The original 100-component gallery remains unchanged.
+
 ## Open the collection
 
 Open [`index.html`](index.html) directly in a browser. No installation, build server, network connection, or framework is needed. The fonts and illustrations are included locally.
@@ -22,7 +30,7 @@ Then visit **http://127.0.0.1:4173/**.
 
 **Private repository:** https://github.com/spockey4711/ui-scrapbook
 
-The GitHub Pages workflow in `.github/workflows/pages.yml` runs on pushes to `main` and can also be started manually. It regenerates the collection, runs the structural tests, and publishes only `index.html`, `assets/`, and `components/`. Development source modules, tests, the builder, and repository documentation are not included in the deployed site.
+The GitHub Pages workflow in `.github/workflows/pages.yml` runs on pushes to `main` and can also be started manually. It regenerates the collection, runs the structural tests, and publishes `index.html`, `assets/`, `components/`, and the checked Angular browser build under `previews/evolveportfolio-scrapbook/`. Development source modules, tests, the builder, and repository documentation are not included in the deployed site.
 
 The deployment is intentionally public and does not require a GitHub login. Anyone with the link can browse it. Like any public frontend, its delivered HTML, CSS, and JavaScript can be inspected or downloaded; keeping the repository private does not hide the code shipped to visitors.
 

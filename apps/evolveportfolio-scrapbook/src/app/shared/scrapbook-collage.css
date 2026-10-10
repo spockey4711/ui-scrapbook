@@ -1,0 +1,240 @@
+:host {
+  display: block;
+  min-width: 0;
+}
+.collage {
+  height: 440px;
+  position: relative;
+}
+.field-note {
+  position: absolute;
+  top: 15px;
+  left: 5px;
+  width: 300px;
+  padding: 35px 25px;
+  background:
+    repeating-linear-gradient(transparent 0 22px, #9fb6c94a 22px 23px),
+    repeating-linear-gradient(90deg, transparent 0 22px, #9fb6c94a 22px 23px), var(--surface);
+  border: 1px solid #c5bda7;
+  transform: rotate(-9deg);
+  min-height: 280px;
+}
+.field-note > .eyebrow {
+  font-size: 0.52rem;
+}
+.field-note p {
+  font-size: 1.9rem;
+  line-height: 1.13;
+  margin-top: 20px;
+}
+.scribble {
+  display: block;
+  border: 2px solid #b95b64;
+  border-radius: 50%;
+  width: 100px;
+  height: 26px;
+  transform: rotate(-15deg);
+  margin: 18px 0 0 35px;
+}
+.hello-badge {
+  position: absolute;
+  right: 5px;
+  top: 60px;
+  width: 228px;
+  background: var(--surface);
+  border: 1.5px solid var(--ink);
+  border-radius: 7px;
+  overflow: hidden;
+  text-align: center;
+  transform: rotate(9deg);
+  box-shadow: 4px 6px 0 #79735920;
+  padding-bottom: 20px;
+}
+.hello-badge > div {
+  background: var(--pink);
+  font:
+    800 2.2rem/1 'Bricolage',
+    sans-serif;
+  letter-spacing: 0.08em;
+  padding: 14px;
+}
+.hello-badge > div > span {
+  display: block;
+  font:
+    500 0.72rem 'DM Sans Variable',
+    sans-serif;
+  letter-spacing: 0;
+  margin-top: 5px;
+}
+.hello-badge strong {
+  display: block;
+  font-size: 2.4rem;
+  line-height: 1.1;
+  margin: 24px 0 12px;
+}
+.hello-badge > span.hand {
+  font-size: 1.1rem;
+}
+.project-ticket {
+  position: absolute;
+  bottom: 43px;
+  left: -4px;
+  width: 270px;
+  background: #f4d978;
+  border: 1px solid var(--ink);
+  padding: 25px;
+  transform: rotate(-5deg);
+}
+.project-ticket::before,
+.project-ticket::after {
+  content: '';
+  position: absolute;
+  top: 45%;
+  width: 18px;
+  height: 18px;
+  background: var(--paper);
+  border-radius: 50%;
+}
+.project-ticket::before {
+  left: -10px;
+}
+.project-ticket::after {
+  right: -10px;
+}
+.project-ticket > .eyebrow {
+  font-size: 0.5rem;
+}
+.project-ticket strong {
+  display: block;
+  font:
+    800 1.9rem/1.05 'Bricolage',
+    sans-serif;
+  letter-spacing: -0.04em;
+  margin: 15px 0;
+}
+.ticket-bottom {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+}
+.barcode {
+  width: 125px;
+  height: 25px;
+  background: repeating-linear-gradient(
+    90deg,
+    var(--ink) 0 2px,
+    transparent 2px 5px,
+    var(--ink) 5px 6px,
+    transparent 6px 8px
+  );
+}
+.flower {
+  position: absolute;
+  top: 226px;
+  left: 235px;
+  color: var(--forest);
+  font-size: 6.5rem;
+  line-height: 1;
+  transform: rotate(8deg);
+}
+.status-stamp {
+  position: absolute;
+  right: 4px;
+  bottom: 55px;
+  border: 3px double var(--forest);
+  padding: 14px 18px;
+  color: var(--forest);
+  font-size: 0.65rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  text-align: center;
+  transform: rotate(12deg);
+}
+.collage-caption {
+  position: absolute;
+  bottom: -12px;
+  right: 16px;
+  font-size: 1.5rem;
+  line-height: 1.15;
+  transform: rotate(3deg);
+}
+@media (min-width: 761px) and (max-width: 1000px) {
+  .collage {
+    scale: 0.85;
+    transform-origin: center;
+  }
+}
+@media (max-width: 760px) {
+  .collage {
+    width: min(440px, 100%);
+    height: 480px;
+    margin: auto;
+  }
+  .field-note {
+    width: 70%;
+    padding: 26px 18px;
+    min-height: 220px;
+    left: 10px;
+  }
+  .field-note p {
+    font-size: 1.7rem;
+    margin-top: 10px;
+  }
+  .hello-badge {
+    width: 49%;
+    right: 3px;
+    top: 140px;
+  }
+  .hello-badge strong {
+    font-size: 2rem;
+  }
+  .project-ticket {
+    width: 51%;
+    left: 3px;
+    bottom: 45px;
+    padding: 16px;
+  }
+  .project-ticket strong {
+    font-size: 1.4rem;
+  }
+  .barcode {
+    width: 75px;
+    flex-shrink: 0;
+  }
+  .ticket-bottom {
+    gap: 5px;
+  }
+  .flower {
+    left: 46%;
+    top: 315px;
+    font-size: 4.5rem;
+  }
+  .status-stamp {
+    right: 0;
+    bottom: 56px;
+    font-size: 0.55rem;
+    padding: 12px;
+  }
+  .collage-caption {
+    font-size: 1.3rem;
+    right: 5px;
+  }
+}
+@media (max-width: 380px) {
+  .hello-badge > span.hand {
+    font-size: 0.95rem;
+  }
+  .field-note p {
+    font-size: 1.5rem;
+  }
+  .project-ticket strong {
+    font-size: 1.25rem;
+  }
+  .status-stamp {
+    padding: 10px 8px;
+  }
+  .ticket-bottom > .hand {
+    font-size: 0.85rem;
+  }
+}

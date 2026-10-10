@@ -1,0 +1,61 @@
+<div class="dashboard-grid">
+  <section class="data-sheet" aria-labelledby="work-title">
+    <div class="sheet-heading">
+      <h2 id="work-title">Arbeitsstand</h2>
+      <span class="eyebrow">Aktuell</span>
+    </div>
+    <p class="sheet-description">Issue-Verteilung je Projekt. Kein Gesamtfortschritt in Prozent.</p>
+    @for (project of projects(); track project.id) {
+      <article class="project-progress">
+        <div class="flex justify-between gap-3">
+          <h3>{{ project.name }}</h3>
+          <span class="issue-total">{{ project.openIssues + project.closedIssues }} Issues</span>
+        </div>
+        <div class="issue-bar" aria-hidden="true">
+          <span [style.width.%]="closedShare(project)"></span>
+        </div>
+        <div class="issue-legend">
+          <span
+            ><i class="closed-dot" aria-hidden="true"></i
+            >{{ project.closedIssues }} geschlossen</span
+          ><span><i class="open-dot" aria-hidden="true"></i>{{ project.openIssues }} offen</span>
+        </div>
+      </article>
+    }
+    <p class="sheet-footnote">
+      Issues unterscheiden sich in Umfang und Aufwand. Ihre Anzahl misst keine Teamleistung.
+    </p>
+  </section>
+  <section class="data-sheet" aria-labelledby="pipeline-title">
+    <div class="sheet-heading">
+      <h2 id="pipeline-title">Projektstatus</h2>
+      <span class="eyebrow">Letzte Pipeline</span>
+    </div>
+    @for (project of projects(); track project.id) {
+      <article class="pipeline-row">
+        <h3>{{ project.name }}</h3>
+        @if (partialError() && project.id === 'demo-capstone') {
+          <div class="pipeline-error" role="status">
+            <span class="status-tag failed">Abruf fehlgeschlagen</span>
+            <p>Pipeline-Daten dieses Projekts fehlen.</p>
+            <button class="text-link" (click)="retry.emit()">Erneut versuchen</button>
+          </div>
+        } @else {
+          <span
+            class="status-tag"
+            [class.failed]="project.pipeline === 'failed'"
+            [class.neutral]="project.pipeline === 'none'"
+            >{{
+              project.pipeline === 'success'
+                ? 'Erfolgreich'
+                : project.pipeline === 'failed'
+                  ? 'Fehlgeschlagen'
+                  : 'Keine Pipeline vorhanden'
+            }}</span
+          >
+          <p>{{ project.pipelineLabel }}</p>
+        }
+      </article>
+    }
+  </section>
+</div>

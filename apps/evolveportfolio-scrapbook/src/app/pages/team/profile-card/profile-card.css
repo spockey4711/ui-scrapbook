@@ -1,0 +1,136 @@
+:host {
+  display: block;
+  min-width: 0;
+  --profile-color: var(--pink);
+}
+:host:nth-child(2) {
+  --profile-color: var(--blue);
+}
+:host:nth-child(3) {
+  --profile-color: #f4d978;
+}
+:host:nth-child(4) {
+  --profile-color: #c8d8ae;
+}
+.profile-card {
+  display: grid;
+  grid-template-columns: 165px 1fr;
+  align-items: start;
+  gap: 24px;
+  padding: 30px 24px;
+  border: 1px solid #c4baa1;
+  background: var(--surface);
+  position: relative;
+  box-shadow: 3px 5px 0 #79735915;
+}
+.photo-paper {
+  position: relative;
+  padding: 9px 9px 14px;
+  background: var(--surface);
+  border: 1px solid #c4baa1;
+  transform: rotate(-5deg);
+  box-shadow: 2px 4px 0 #79735920;
+}
+:host:nth-child(even) .photo-paper {
+  transform: rotate(5deg);
+}
+.photo-slot {
+  height: 175px;
+  background: var(--profile-color);
+  display: grid;
+  align-content: center;
+  justify-items: center;
+}
+.profile-initials {
+  font-size: 4.5rem;
+  line-height: 1.1;
+}
+.photo-caption {
+  font-size: 0.5rem;
+  margin-top: 10px;
+}
+.photo-note {
+  display: block;
+  font-size: 1.3rem;
+  text-align: center;
+  line-height: 1.1;
+  padding-block: 14px 8px;
+}
+.photo-paper .demo-label {
+  display: block;
+  font-size: 0.49rem;
+  text-align: center;
+}
+.profile-content {
+  min-width: 0;
+}
+.profile-content > .eyebrow {
+  display: inline-block;
+  padding: 5px 8px;
+  background: var(--profile-color);
+  font-size: 0.58rem;
+}
+.profile-content h2 {
+  font:
+    700 2.8rem/1.15 'Caveat',
+    cursive;
+  margin: 14px 0 12px;
+}
+.profile-content > .muted {
+  font-size: 0.82rem;
+}
+.tag {
+  background: var(--surface);
+  border-style: dashed;
+  font-size: 0.65rem;
+}
+.profile-toggle {
+  border: 0;
+  background: transparent;
+  font-size: 0.75rem;
+  margin-top: 20px;
+  text-decoration: underline;
+}
+.personal-note {
+  background: var(--profile-color);
+  padding: 18px;
+  margin-top: 12px;
+}
+.personal-note .hand {
+  font-size: 1.8rem;
+  line-height: 1.1;
+}
+.personal-note p:last-child {
+  font-size: 0.75rem;
+  margin-top: 10px;
+}
+[hidden] {
+  display: none !important;
+}
+@media (max-width: 1100px) {
+  .profile-card {
+    grid-template-columns: 130px 1fr;
+    gap: 20px;
+    padding: 25px 18px;
+  }
+  .photo-slot {
+    height: 145px;
+  }
+  .photo-note {
+    font-size: 1.1rem;
+  }
+}
+@media (max-width: 420px) {
+  .profile-card {
+    grid-template-columns: 1fr;
+    padding: 25px;
+    gap: 28px;
+  }
+  .photo-paper {
+    width: 175px;
+    margin: auto;
+  }
+  .photo-slot {
+    height: 150px;
+  }
+}

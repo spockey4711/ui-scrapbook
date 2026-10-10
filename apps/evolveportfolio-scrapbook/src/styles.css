@@ -1,0 +1,339 @@
+@import '@fontsource-variable/dm-sans/wght.css';
+@import '@fontsource/caveat/latin-400.css';
+@import '@fontsource/caveat/latin-700.css';
+@import 'tailwindcss';
+
+@font-face {
+  font-family: 'Bricolage';
+  src: url('../public/fonts/bricolage.woff2') format('woff2');
+  font-weight: 200 800;
+  font-display: swap;
+}
+@theme {
+  --font-sans: 'DM Sans Variable', sans-serif;
+  --font-hand: 'Caveat', cursive;
+  --color-paper: #f3efdf;
+  --color-ink: #29291f;
+  --color-forest: #345b43;
+}
+:root {
+  --paper: #f3efdf;
+  --surface: #fffdf4;
+  --ink: #29291f;
+  --muted: #656451;
+  --forest: #345b43;
+  --green-soft: #e7ecd9;
+  --note: #f4cd50;
+  --pink: #f0a4bf;
+  --blue: #9dc8e3;
+  --line: #d6d0bb;
+  --radius: 3px;
+  color: var(--ink);
+  background: var(--paper);
+  font-family: 'DM Sans Variable', sans-serif;
+  font-synthesis: none;
+}
+* {
+  box-sizing: border-box;
+}
+body {
+  margin: 0;
+}
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 50;
+  opacity: 0.12;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 180 180' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.88' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Cpath fill='%23857960' opacity='.28' filter='url(%23n)' d='M0 0h180v180H0z'/%3E%3C/svg%3E");
+}
+button,
+input,
+select {
+  font: inherit;
+}
+a,
+button,
+select {
+  -webkit-tap-highlight-color: transparent;
+}
+a {
+  color: inherit;
+}
+button {
+  cursor: pointer;
+}
+button:disabled {
+  cursor: wait;
+  opacity: 0.6;
+}
+:focus-visible {
+  outline: 3px solid var(--forest);
+  outline-offset: 5px;
+}
+::selection {
+  background: var(--pink);
+  color: var(--ink);
+}
+h1,
+h2,
+h3,
+p {
+  margin: 0;
+}
+h1,
+h2,
+h3 {
+  font-family: 'Bricolage', sans-serif;
+}
+h1 {
+  font-size: clamp(2.8rem, 6vw, 5rem);
+  font-weight: 800;
+  line-height: 1.06;
+  letter-spacing: -0.055em;
+}
+h2 {
+  font-size: clamp(2.2rem, 3.7vw, 3.5rem);
+  font-weight: 800;
+  line-height: 1.08;
+  letter-spacing: -0.045em;
+}
+h3 {
+  font-size: 1.35rem;
+  font-weight: 750;
+  letter-spacing: -0.025em;
+}
+p {
+  line-height: 1.75;
+}
+.hand {
+  font-family: 'Caveat', cursive;
+  font-weight: 700;
+  letter-spacing: 0;
+}
+.muted {
+  color: var(--muted);
+}
+.eyebrow {
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+.page-width {
+  width: min(1200px, calc(100% - 80px));
+  margin-inline: auto;
+}
+.page-heading {
+  padding-block: 70px 42px;
+}
+.page-heading .eyebrow {
+  color: var(--forest);
+  margin-bottom: 20px;
+}
+.page-heading p {
+  max-width: 630px;
+  margin-top: 22px;
+  color: var(--muted);
+}
+.paper-lines {
+  background-image: repeating-linear-gradient(transparent 0 30px, #9fb6c940 30px 31px);
+}
+.section {
+  padding-block: 90px;
+  border-top: 1px dashed #a8a18a;
+}
+.section-label {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  margin-bottom: 24px;
+}
+.section-number {
+  display: grid;
+  place-items: center;
+  border: 1px solid var(--ink);
+  width: 37px;
+  height: 37px;
+  font:
+    700 24px 'Caveat',
+    cursive;
+  border-radius: 48% 52% 45% 55%;
+  transform: rotate(-8deg);
+  background: var(--pink);
+}
+.button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+  padding: 14px 22px;
+  min-height: 48px;
+  border: 1.5px solid var(--ink);
+  border-radius: var(--radius);
+  background: var(--ink);
+  color: var(--surface);
+  text-decoration: none;
+  font-size: 0.86rem;
+  font-weight: 700;
+  transition:
+    transform 0.18s,
+    box-shadow 0.18s;
+}
+.button:hover {
+  box-shadow: 4px 4px 0 var(--pink);
+  transform: translate(-1px, -2px);
+}
+.button.secondary {
+  color: var(--ink);
+  background: var(--surface);
+}
+.button.secondary:hover {
+  box-shadow: 4px 4px 0 var(--note);
+}
+.text-link {
+  display: inline-flex;
+  gap: 12px;
+  align-items: center;
+  padding-block: 9px;
+  color: var(--ink);
+  text-underline-offset: 5px;
+  font-size: 0.9rem;
+  font-weight: 700;
+}
+.tag {
+  display: inline-flex;
+  align-items: center;
+  padding: 5px 10px;
+  border: 1px solid var(--ink);
+  background: var(--blue);
+  border-radius: 2px;
+  color: var(--ink);
+  font-size: 0.72rem;
+}
+.note {
+  background: var(--note);
+  padding: 25px;
+  position: relative;
+  box-shadow: 3px 5px 0 #6e684b20;
+}
+.note::before,
+.taped::before {
+  content: '';
+  position: absolute;
+  width: 88px;
+  height: 26px;
+  top: -12px;
+  left: calc(50% - 44px);
+  background: #e9c98bb3;
+  transform: rotate(-4deg);
+  clip-path: polygon(2% 8%, 98% 0, 96% 93%, 0 100%);
+  z-index: 2;
+}
+.note .hand {
+  font-size: 1.8rem;
+  line-height: 1.15;
+}
+.torn {
+  clip-path: polygon(
+    0 0,
+    100% 0,
+    100% 96%,
+    96% 98%,
+    92% 96%,
+    88% 100%,
+    84% 97%,
+    80% 99%,
+    76% 96%,
+    72% 100%,
+    68% 97%,
+    64% 99%,
+    60% 96%,
+    56% 99%,
+    52% 97%,
+    48% 100%,
+    44% 97%,
+    40% 99%,
+    36% 97%,
+    32% 100%,
+    28% 96%,
+    24% 99%,
+    20% 97%,
+    16% 100%,
+    12% 96%,
+    8% 99%,
+    4% 97%,
+    0 100%
+  );
+}
+.empty-state {
+  padding: 40px 24px;
+  text-align: center;
+  color: var(--muted);
+}
+.empty-state h3 {
+  color: var(--ink);
+  margin-bottom: 10px;
+}
+.demo-label {
+  font-size: 0.65rem;
+  letter-spacing: 0.07em;
+  text-transform: uppercase;
+  padding: 5px 8px;
+  border: 1px dashed #827b65;
+  color: #4d4b3b;
+  background: #fffdf4b0;
+}
+.skip-link {
+  position: fixed;
+  top: -80px;
+  left: 20px;
+  z-index: 100;
+  padding: 12px;
+  background: var(--ink);
+  color: white;
+}
+.skip-link:focus {
+  top: 12px;
+}
+.reveal {
+  animation: appear 0.5s ease-out both;
+}
+@keyframes appear {
+  from {
+    opacity: 0;
+    translate: 0 10px;
+  }
+  to {
+    opacity: 1;
+    translate: 0 0;
+  }
+}
+@media (max-width: 640px) {
+  .page-width {
+    width: calc(100% - 40px);
+  }
+  .page-heading {
+    padding-block: 44px 30px;
+  }
+  .section {
+    padding-block: 60px;
+  }
+  h2 {
+    font-size: clamp(1.9rem, 8vw, 2.8rem);
+  }
+  .button {
+    padding-inline: 16px;
+    gap: 12px;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation: none !important;
+    transition: none !important;
+    scroll-behavior: auto !important;
+  }
+}

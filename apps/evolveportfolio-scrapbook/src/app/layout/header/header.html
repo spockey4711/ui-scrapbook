@@ -1,0 +1,22 @@
+<header class="site-header">
+  <div class="page-width header-inner">
+    <a routerLink="/" class="brand" aria-label="Project Evolve - Startseite">
+      <img src="evolve-mark.svg" alt="" width="44" height="44" />
+      <span class="hand">evolve<span class="brand-caption">TEAM-SCRAPBOOK</span></span>
+    </a>
+    <nav aria-label="Hauptnavigation">
+      @for (item of navigation; track item.path) {
+        <a
+          [routerLink]="item.path"
+          routerLinkActive="active"
+          [routerLinkActiveOptions]="{ exact: true }"
+          ariaCurrentWhenActive="page"
+        >
+          <span class="nav-number" aria-hidden="true">{{ item.number }}</span
+          >{{ item.label }}
+        </a>
+      }
+    </nav>
+    <span class="header-edition eyebrow">WiSe 26/27</span>
+  </div>
+</header>

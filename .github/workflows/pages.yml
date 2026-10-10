@@ -25,6 +25,21 @@ jobs:
       - name: Check out private source repository
         uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4
 
+      - name: Set up Node.js for the Angular preview
+        uses: actions/setup-node@v4
+        with:
+          node-version: '24'
+          cache: npm
+          cache-dependency-path: apps/evolveportfolio-scrapbook/package-lock.json
+
+      - name: Check and build the Project Evolve preview
+        working-directory: apps/evolveportfolio-scrapbook
+        run: |
+          npm ci
+          npm run lint
+          npm test -- --watch=false
+          npm run build -- --base-href /ui-scrapbook/previews/evolveportfolio-scrapbook/
+
       - name: Build, test, and stage the public website
         run: |
           node build.mjs
@@ -32,6 +47,8 @@ jobs:
           mkdir _site
           cp index.html _site/
           cp -R assets components _site/
+          mkdir -p _site/previews/evolveportfolio-scrapbook
+          cp -R apps/evolveportfolio-scrapbook/dist/teamsite/browser/. _site/previews/evolveportfolio-scrapbook/
 
       - name: Configure GitHub Pages
         uses: actions/configure-pages@983d7736d9b0ae728b81ab479565c72886d7745b # v5

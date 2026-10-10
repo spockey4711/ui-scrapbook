@@ -1,0 +1,37 @@
+<div class="page-width reveal">
+  <header class="page-heading team-heading">
+    <div>
+      <div class="eyebrow">02 / Das Team</div>
+      <h1>Menschen, nicht<br />nur Commit-Namen.</h1>
+      <p>
+        Hier bekommt Team Evolve ein Gesicht. Mit persönlichen Vorstellungen, unterschiedlichen
+        Interessen und Platz für das, was uns ausmacht.
+      </p>
+    </div>
+    <aside class="note">
+      <span class="eyebrow">Noch eine offene Seite</span>
+      <p class="hand">Die Persönlichkeiten<br />kommen von euch.</p>
+    </aside>
+  </header>
+  <div class="placeholder-notice">
+    <span class="demo-label">Design-MVP</span>
+    <p>
+      Die vier Profile sind Layoutplätze, keine Angabe zur tatsächlichen Teamgröße. Namen, Fotos und
+      Texte ergänzen wir nach Freigabe.
+    </p>
+  </div>
+  <section
+    class="grid grid-cols-1 md:grid-cols-2 gap-6 profile-grid"
+    aria-label="Teamprofile als Layoutplatzhalter"
+  >
+    @for (member of members; track member.id) {
+      <app-profile-card [member]="member" />
+    }
+  </section>
+  <section class="team-end">
+    <p class="hand">Zusammen wird daraus Evolve.</p>
+    <a routerLink="/dashboard" class="text-link"
+      >Unsere Entwicklung ansehen <span aria-hidden="true">→</span></a
+    >
+  </section>
+</div>

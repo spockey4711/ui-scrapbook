@@ -1,0 +1,151 @@
+.team-teaser {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  align-items: center;
+  gap: 70px;
+  border-top: 0;
+}
+.team-preview {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  padding: 48px 10px 50px;
+}
+.team-preview app-scrapbook-polaroid {
+  width: 49%;
+  max-width: 230px;
+}
+.first {
+  transform: rotate(-8deg);
+  margin-right: -12px;
+  z-index: 1;
+}
+.second {
+  transform: rotate(7deg);
+  margin-top: 38px;
+}
+.team-sticker {
+  position: absolute;
+  top: 3px;
+  right: 15px;
+  padding: 12px 18px;
+  background: var(--note);
+  border: 1px solid var(--ink);
+  transform: rotate(8deg);
+  font-size: 0.55rem;
+  z-index: 2;
+}
+.preview-caption {
+  position: absolute;
+  bottom: 0;
+  font-size: 1.6rem;
+  transform: rotate(-3deg);
+}
+.activity-section {
+  background: #e6ded0;
+  border-bottom: 1px dashed #a8a18a;
+}
+.activity-sheet {
+  position: relative;
+  background: var(--surface);
+  border: 1px solid #bbb29d;
+  padding: 30px 32px 45px;
+  transform: rotate(-3deg);
+  box-shadow: 5px 5px 0 #79735920;
+}
+.sheet-tab {
+  background: var(--pink);
+  padding: 4px 12px;
+  font-size: 1.25rem;
+  transform: rotate(5deg);
+}
+.notebook-row {
+  display: flex;
+  gap: 16px;
+  align-items: center;
+  padding-block: 22px;
+  border-bottom: 1px dashed var(--line);
+}
+.row-number {
+  display: grid;
+  place-items: center;
+  width: 30px;
+  height: 30px;
+  border: 1px solid var(--ink);
+  background: var(--blue);
+  font:
+    700 1.1rem 'Caveat',
+    cursive;
+  transform: rotate(-6deg);
+}
+.notebook-row h3 {
+  font-size: 1.1rem;
+}
+.notebook-row p {
+  font-size: 0.75rem;
+  color: var(--muted);
+  margin-top: 5px;
+}
+.notebook-row > span:last-child {
+  margin-left: auto;
+}
+.sheet-footnote {
+  font-size: 0.65rem;
+  margin-top: 18px;
+  color: var(--muted);
+}
+.contact-teaser {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 35px;
+  border-top: 0;
+  padding-left: 120px;
+}
+.contact-teaser > div:last-child {
+  max-width: 330px;
+}
+.contact-teaser .hand {
+  font-size: 1.8rem;
+}
+.contact-stamp {
+  position: absolute;
+  left: 0;
+  top: 115px;
+  border: 3px double var(--ink);
+  background: var(--pink);
+  padding: 16px 13px;
+  font:
+    700 1.3rem/1 'Caveat',
+    cursive;
+  transform: rotate(-12deg);
+}
+@media (max-width: 800px) {
+  .team-teaser {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 25px;
+  }
+  .team-preview {
+    max-width: 470px;
+    width: 100%;
+    margin: auto;
+  }
+  .contact-teaser {
+    padding-left: 0;
+  }
+  .contact-stamp {
+    display: none;
+  }
+}
+@media (max-width: 640px) {
+  .contact-teaser {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  .activity-sheet {
+    padding: 24px 20px 40px;
+    transform: rotate(-1deg);
+    margin-inline: 4px;
+  }
+}
